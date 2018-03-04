@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+use App\Http\Requests\UserRequest;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Auth;
+use App\Services\RoleService;
+use App\Services\UserService;
 
 class RegisterController extends Controller
 {
@@ -34,9 +40,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService, RoleService $roleService)
     {
-        $this->middleware('guest');
+        $this->modelService = $userService;
+        $this->roleService = $roleService;
+        $this->messageModel = trans('models.user');
     }
 
     /**
@@ -60,12 +68,39 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $roles = $this->roleService->lists();
+        $postAction = route('register.save');
+        $actionMethod = 'POST';
+
+        return view('user.edit', [
+            'user' => null,
+            'postAction' => $postAction,
+            'actionMethod' => $actionMethod,
+            'roles' => $roles,
+            'pageTitle' => 'New account',
+            'back_button_action' => route('logout'),
         ]);
+    }
+
+    public function save(UserRequest $request)
+    {
+        if($request['generatePassword'] == 1)
+            $pass = str_random(8);
+        else
+            $pass = $request['password'];
+
+        $request['password'] = \Hash::make($pass);
+
+        $user = User::create($request->except('_token'));
+      
+        if(Auth::user()->hasPermissionTo('change role'))
+            $user->assignRole(Role::findOrFail($request['role_id']));
+        else
+            $user->assignRole(Role::findOrFail(2));
+        // if($user)
+        // Mail::to($request['email'])->send(new NewAccount($user, $pass));     
+          return redirect()->route('logout')->withSuccess(trans('actions.created', ['object' => $this->messageModel]));
     }
 }

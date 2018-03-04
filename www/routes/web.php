@@ -11,19 +11,25 @@
 |
  */
 
-Route::get('/', function () {
-    redirect()->route('login');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@index')->name('login');
     Route::post('login', 'LoginController@login')->name('post.login');
     Route::get('logout', 'LoginController@logout')->name('logout');
 
+    Route::get('guest', 'LoginController@guest')->name('guest');
+    Route::get('register', 'RegisterController@create')->name('register');
+    Route::post('register/save', 'RegisterController@save')->name('register.save');
+    
     Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset_form');
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset')->name('password.request');
+});
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -39,10 +45,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/{user}/activate', 'UserController@activate')->name('user.activate');
             Route::get('/{user}/deactivate', 'UserController@deactivate')->name('user.deactivate');
         });
+
         Route::group(['middleware' => 'permission:create user'], function () {
             Route::get('create', 'UserController@create')->name('user.create');
             Route::post('', 'UserController@store')->name('user.store');
         });
+
         Route::patch('/{user}', 'UserController@update')->name('user.update');
         Route::get('/{id}', function(){throw new \ErrorException();});
         Route::get('/{user}/edit', 'UserController@edit')->name('user.edit')->middleware('permission:update user');
@@ -90,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('', 'ResponseController@index')->name('resp.index');
         Route::post('/datatables', 'ResponseController@datatables')->name('resp.datatables');
         
-        Route::group(['middleware' => 'permission:create resp'], function(){
+        Route::group(['middleware' => 'permission:create response'], function(){
             Route::get('/create', 'ResponseController@create')->name('resp.create');
             Route::post('', 'ResponseController@store')->name('resp.store');
         });
@@ -115,3 +123,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile#edit', 'UserController@profile')->name('profile.edit');
 
 });
+
+
+
+
+

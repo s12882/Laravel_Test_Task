@@ -41,7 +41,6 @@ class UserRequest extends FormRequest
                         'surname' => 'required|max:255',
                         'email' => 'required|email|unique:users,email',
                         'phoneNumber' => 'required|numeric|digits_between:9,14|unique:users,phoneNumber',
-                        'section_id' => 'required'
                     ];
                 }
             case 'PUT':

@@ -12,7 +12,7 @@
             <div class="portlet-title">
                 <div class="caption font-grey-mint">
                     <i class="fa fa-lock fa-2x font-grey-mint"></i>
-                    <span class="caption-subject uppercase bold">Lista ról</span>
+                    <span class="caption-subject uppercase bold">List of roles</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                             <div class="btn-group">
                                 <a href="{{route('role.create')}}" class="btn grey-mint btn-outline">
-                                    Dodaj
+                                    Add
                                     <i class="fa fa-plus-circle"></i>
                                 </a>
                             </div>
@@ -33,8 +33,8 @@
                 <table class="table table-bordered table-striped table-responsive" id="table">
                     <thead>
                         <tr>
-                            <th>Nazwa</th>
-                            <th>Akcje</th>
+                            <th>Name</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                 </table>

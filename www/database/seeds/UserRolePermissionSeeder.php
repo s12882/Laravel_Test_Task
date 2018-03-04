@@ -13,6 +13,6 @@ class UserRolePermissionSeeder extends Seeder
     public function run()
     {
       $user = User::find(1);
-      $user->assignRole('facility manager');
+      $user->assignRole('Admin');
     }
 }

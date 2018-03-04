@@ -123,13 +123,13 @@ $(document).delegate('[data-action="delete"]', 'click', function (event) {
 
     var url = $(this).attr('href');
     swal({
-        title: "Czy na pewno usunąć?",
-        text: "Usunięcie jest zmianą nieodwracalną",
+        title: "Delete?",
+        text: "This cannot be undone",
         type: "warning",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
         confirmButtonText: "Tak, usuń",
-        cancelButtonText: "Anuluj",
+        cancelButtonText: "Cancel",
         closeOnConfirm: true,
         closeOnCancel: true
     }, function (isConfirm) {
@@ -141,18 +141,18 @@ $(document).delegate('[data-action="delete"]', 'click', function (event) {
 
 
 dtLanguage = {
-    lengthMenu: "Pokaż _MENU_ pozycji",
+    lengthMenu: "Show _MENU_ positions",
     search: "Szukaj:",
-    info: "Pozycje od _START_ do _END_ z _TOTAL_ łącznie",
-    infoFiltered: "(przefiltrowane z  _MAX_ dostępnych pozycji)",
-    zeroRecords: "Brak danych",
-    infoEmpty: "Pozycji 0 z 0 dostępnych",
-    processing: '<span style="margin-top: 50px;"><i class="fa fa-spin fa-spinner"></i> Trwa pobieranie danych</span>',
+    info: "Positions from _START_ to _END_ with _TOTAL_ total",
+    infoFiltered: "(Filtered from  _MAX_ available positions)",
+    zeroRecords: "No data",
+    infoEmpty: "Positions 0 from 0 available",
+    processing: '<span style="margin-top: 50px;"><i class="fa fa-spin fa-spinner"></i> Loading</span>',
     paginate: {
-        first: "Pierwsza",
-        previous: "Poprzednia",
-        next: "Następna",
-        last: "Ostatnia"
+        first: "First",
+        previous: "Previous",
+        next: "Next",
+        last: "Last"
     }
 };
 

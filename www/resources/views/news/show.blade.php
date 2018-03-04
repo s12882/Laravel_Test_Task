@@ -38,7 +38,7 @@
 		</div>
 	</div>
 </div>
-		@if(isset($news) && count($news->images)> 0)
+		@if(isset($news) && count($news->images) > 0)
 		<div class="row">
 		<div class='col-sm-12'>
 			<div class="portlet light bordered">

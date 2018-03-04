@@ -25,10 +25,6 @@ class Authenticate
     {
         $this->auth = $auth;
         $user = \Auth::user();
-        if($user && $user->is_active === 0){
-          \Auth::logout();
-          return redirect('/login')->with('message', trans('actions.user_disabled'));
-        }
     }
 
     /**
@@ -44,7 +40,6 @@ class Authenticate
     public function handle($request, Closure $next, ...$guards)
     {
         $this->authenticate($guards);
-
         return $next($request);
     }
 

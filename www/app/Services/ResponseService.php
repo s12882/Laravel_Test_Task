@@ -5,11 +5,13 @@ namespace App\Services;
 use App\Enums\DtButtonType;
 use App\Helpers\DtButtonHelper;
 use App\Models\Response;
+use App\Services\UserService;
 use Auth;
 use Yajra\Datatables\Datatables;
 
 class ResponseService
 {
+
     public function get($id)
     {
         return $this->resp()->where('id', $id)->first();
@@ -28,8 +30,8 @@ class ResponseService
     }
 
     public function store($input)
-    {
-     
+    {         
+             $input['author_id'] = Auth::id();
         try{
             \DB::beginTransaction();
             $resp = Response::create($input->except('_token'));
@@ -74,9 +76,9 @@ class ResponseService
             ->addColumn('actions', function ($resp) {
                 $actions = '';
                  $actions .= DtButtonHelper::getByType(route('resp.show', ['resp' => $resp->id]), DtButtonType::SHOW);
-                if(Auth::user()->hasPermissionTo('update resp'))
+                if(Auth::user()->hasPermissionTo('update response'))
                     $actions .= DtButtonHelper::getByType(route('resp.edit', ['resp' => $resp->id]), DtButtonType::EDIT);                   
-                if (Auth::user()->hasPermissionTo('delete resp')) {
+                if (Auth::user()->hasPermissionTo('delete response')) {
                     $actions .= DtButtonHelper::getByType(route('resp.destroy', ['resp' => $resp->id]), DtButtonType::DELETE);
                 }
                 return $actions;

@@ -13,7 +13,7 @@
             <div class="portlet-title">
                 <div class="caption font-grey-mint">
                     <i class="fa fa-users fa-2x font-grey-mint"></i>
-                    <span class="caption-subject uppercase bold">Lista pracowników</span>
+                    <span class="caption-subject uppercase bold">List of users</span>
                 </div>
             </div>
               @can('create user')
@@ -33,12 +33,11 @@
                 <table class="table table-bordered table-striped table-responsive" id="table">
                     <thead>
                         <tr>
-                            <th>Imie</th>
-                            <th>Nazwisko</th>
-                            <th>Dział</th>
-                            <th>Numer telefonu</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Phone number</th>
                             <th>E-mail</th>
-                            <th>Akcje</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                 </table>

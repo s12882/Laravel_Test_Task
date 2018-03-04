@@ -14,13 +14,14 @@ class RolesSeeder extends Seeder
     public function run()
     {
       app()['cache']->forget('spatie.permission.cache');
-      $role = Role::create(['name' => 'facility manager']);
+      $role = Role::create(['name' => 'Admin']);
       $role->givePermissionTo(Permission::all());
 
-      $role1 = Role::create(['name' => 'section manager']);
-      $role1->givePermissionTo('create user');
-      $role1->givePermissionTo('update user');
-      $role1->givePermissionTo('delete user');
-      $role1->givePermissionTo('list users');
+      $role1 = Role::create(['name' => 'User']);
+      $role1->givePermissionTo('create response');
+	  $role1->givePermissionTo('update user');
+	  
+	  $role2 = Role::create(['name' => 'Guest']);
+	  $role2->givePermissionTo('create user');
     }
 }

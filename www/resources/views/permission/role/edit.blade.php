@@ -15,7 +15,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <label class="col-md-2 control-label">
-                            Nazwa <span class="required" aria-required="true"> * </span>
+                            Name <span class="required" aria-required="true"> * </span>
                         </label>
                         <div class="col-lg-6 col-md-8">
                             <div class="input-icon right">
@@ -26,13 +26,13 @@
                     </div>
                     <div class="form-group">
                       <label class="col-md-2 control-label" for="checkboxes">
-                        Uprawnienia
+                        Permissions
                       </label>
                       <div class="col-lg-6 col-md-8">
                           @foreach ($permissions as $id => $permission)
                             <div class="input-icon right">
                                 <i class="fa"></i>
-                              {{ Form::checkbox('permissions[]',  $permission, $model != null ? $model->hasPermissionTo($permission) : null, ['data-rule-oneOrMore' => "true", 'data-msg-oneOrMore' => "Przynajmniej jedno uprawnienie musi być wybrane"]) }}
+                              {{ Form::checkbox('permissions[]',  $permission, $model != null ? $model->hasPermissionTo($permission) : null, ['data-rule-oneOrMore' => "true", 'data-msg-oneOrMore' => "At least one permission should be checked"]) }}
                               {{ Form::label($permission, trans('permission.'.$permission)) }}
                              </div>
                           @endforeach
@@ -42,8 +42,8 @@
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-2 col-lg-4 col-md-6">
-                            {!! Form::submit('Zatwierdź', ['class'=>'btn grey-mint grey-mint-stripe btn-outline']) !!}
-                            <a class="btn red red-stripe btn-outline" href="{{route('role.index')}}">Powróć do listy</a>
+                            {!! Form::submit('Confirm', ['class'=>'btn grey-mint grey-mint-stripe btn-outline']) !!}
+                            <a class="btn red red-stripe btn-outline" href="{{route('role.index')}}">Go back</a>
                             {!! Form::close() !!}
                         </div>
                     </div>

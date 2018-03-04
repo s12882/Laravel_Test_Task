@@ -51,7 +51,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('.chat')
                 },
                 data: {
-                    news_id: {!!$news->id!!},
+                    resp_id: {!!$resp->id!!},
                     last: last.value()
                 },
                 success: function(data) {

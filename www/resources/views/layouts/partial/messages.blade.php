@@ -8,7 +8,7 @@
 @if (session('info'))
     <div class="alert alert-info alert-info-stripe alert-dismissible margin-top-10" role="alert">
         <button type="button" class="close pull-right" data-dismiss="alert" aria-label="Close" style="color:#327ad5"><span aria-hidden="true">&times;</span></button>
-        <h4 class="block">Informacja</h4>
+        <h4 class="block">Info</h4>
         <strong>{{ session('info') }}</strong>
     </div>
 @endif

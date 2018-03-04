@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Services\RoleService;
-use App\Services\SectionService;
 use App\Services\UserService;
 use Auth;
 use Illuminate\Http\Request;
@@ -32,7 +31,6 @@ class UserController extends Controller
 
     public function create()
     {
-        $sections = $this->sectionService->lists();
         $roles = $this->roleService->lists();
         $postAction = route('user.store');
         $actionMethod = 'POST';
@@ -41,9 +39,8 @@ class UserController extends Controller
             'user' => null,
             'postAction' => $postAction,
             'actionMethod' => $actionMethod,
-            'sections' => $sections,
             'roles' => $roles,
-            'pageTitle' => 'Nowy pracownik',
+            'pageTitle' => 'New account',
             'back_button_action' => route('user.index'),
         ]);
     }
@@ -112,7 +109,6 @@ class UserController extends Controller
         $user = Auth::user();
         $postAction = route('user.update', ['user' => Auth::id()]);
         $actionMethod = 'PATCH';
-        $sections = $this->sectionService->lists();
         $roles = $this->roleService->lists();
         return view('user.profile', [
             'user' => $user,

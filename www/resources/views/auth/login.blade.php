@@ -47,7 +47,7 @@
                 <span class="font-weight-bold"><strong>OR</strong></span>
             </div>
             <div class="form-group">
-                <a href="{!!route('password.reset_form')!!}" class="btn btn-lg btn-block blue-dark uppercase">Reset password</a>
+                <a href="{!!route('guest')!!}" class="btn btn-lg btn-block blue-dark uppercase">Entry as guest</a>
             </div>
 		</form>
 	</div>

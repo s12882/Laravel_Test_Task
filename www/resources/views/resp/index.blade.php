@@ -48,6 +48,7 @@
                             <th>Name</th>
                             <th>Description</th>                                              
                             <th>Date</th>
+                            <th>Email</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

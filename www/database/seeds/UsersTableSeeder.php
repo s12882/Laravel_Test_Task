@@ -9,11 +9,20 @@ class UsersTableSeeder extends Seeder
     {
       User::create([
           'login' => 'root',
-          'email' => 'lukasz.grabowski6@gmail.com',
-          'password' => \Hash::make('inz2018'),
-          'first_name' => 'Łukasz',
-          'surname' => 'Grabowski',
+          'email' => 'whooles96@gmail.com',
+          'password' => \Hash::make('toor'),
+          'first_name' => 'Andrii',
+          'surname' => 'Slobodian',
           'phoneNumber' => '555555555'
+        ]);
+		
+		User::create([
+          'login' => 'guest',
+          'email' => 's12882@pjwstk.edu.pl',
+          'password' => \Hash::make('1234'),
+          'first_name' => 'Guest',
+          'surname' => 'Account ',
+          'phoneNumber' => '099366877'
         ]);
 
         $users = factory(App\Models\User::class, 6)->create();

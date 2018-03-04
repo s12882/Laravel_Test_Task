@@ -56,18 +56,28 @@
                                     <span class="username username-hide-mobile">
                                     </span>
                                 </a>
+                                
                                 <ul class="dropdown-menu dropdown-menu-default">
+                                  @can('update user')
                                   <li>
                                       <a href="{{route('profile.index')}}">
-                                          <i class="fa fa-user"></i> Profil
+                                          <i class="fa fa-user"></i> Profile
                                       </a>
                                   </li>
+                                   @endcan
                                     <li>
                                         <a href="{{route('logout')}}">
-                                            <i class="icon-key"></i> Wyloguj się
+                                            <i class="icon-key"></i> Sign out/Sign in
+                                        </a>
+                                    </li>
+                                   
+                                     <li>
+                                        <a href="{{route('register')}}">
+                                            <i class="fa fa-user"></i> Register
                                         </a>
                                     </li>
                                 </ul>
+                                
                             </li>
                         </ul>
                     </div>
@@ -88,7 +98,7 @@
                             <li class="nav-item {!! BladeHelper::isRouteSelected('/') !!}">
                                 <a href="{{route('home')}}" class="nav-link nav-toggle">
                                     <i class='fa fa-home'></i>
-                                    <span class="title">Strona główna</span>
+                                    <span class="title">Main page</span>
                                 </a>
                             </li>
                             <!-- ITEM IN MENU -->
@@ -97,7 +107,7 @@
                             <li class="nav-item {!! BladeHelper::isRouteSelected('*user') !!}">
                                 <a href="{{route('user.index')}}" class="nav-link nav-toggle">
                                     <i class='fa fa-users'></i>
-                                    <span class="title">Pracownicy</span>
+                                    <span class="title">Users</span>
                                 </a>
                             </li>
                           @endcan                                                        
@@ -105,13 +115,10 @@
                             <li class="nav-item {!! BladeHelper::isRouteSelected('*role') !!}">
                                 <a href="{{route('role.index')}}" class="nav-link nav-toggle">
                                     <i class='fa fa-lock'></i>
-                                    <span class="title">Uprawnienia</span>
+                                    <span class="title">Permissions</span>
                                 </a>
                             </li>
-                            @endcan                      
-                            <li class="heading">
-                                <h3 class="uppercase">Słowniki</h3>
-                            </li>                    
+                            @endcan                                                                  
                         </ul>
                     </div>
                 </div>

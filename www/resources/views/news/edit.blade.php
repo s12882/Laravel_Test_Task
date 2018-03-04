@@ -36,18 +36,6 @@
 							'spellcheck'=>'false']) !!}
 						</div>
 					</div>
-					@if(!preg_match( '/create/', Route::currentRouteName()))
-					<div class="form-group">
-						<label class="col-md-2 control-label">
-							Status:
-							<span class="required" aria-required="true"> * </span>
-						</label>
-						<div class="col-lg-9 col-md-10">
-							{!! Form::select('status', $status, null, ['class' => 'form-control selectpicker','data-none-selected-text' => "Nie wybrano
-							obiektu", 'data-live-search'=>'true', 'autocomplete' =>'off', 'spellcheck'=>'false']) !!}
-						</div>
-					</div>
-					@endif
 						<div class="form-group">
 							<label class="col-lg-2 col-md-2 control-label">
 								Images

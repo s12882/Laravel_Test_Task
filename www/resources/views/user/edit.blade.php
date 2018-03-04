@@ -2,7 +2,7 @@
 @section('page-styles')
 @stop
 @section('content')
-  @include('user.partials.edit-form')
+@include('user.partials.edit-form')
 @stop
 @section('plugin-js')
 @stop

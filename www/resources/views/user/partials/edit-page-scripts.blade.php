@@ -26,9 +26,6 @@ $('.user-form').validate({
                     required:true, 
                     email: true
                 },
-                section_id: {
-                    required: true
-                }
             },
             highlight: function(element) {
                 $(element).closest('.form-group').addClass('has-error');

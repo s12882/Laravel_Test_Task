@@ -8,12 +8,12 @@
 		<div class="portlet light bordered">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-news font-grey-mint"></i>
+					<i class="fa fa-resp font-grey-mint"></i>
 					<span class="caption-subject font-grey-mint bold uppercase">{{$pageTitle}}</span>
 				</div>
 			</div>
 			<div class="portlet-body form">
-				{!! Form::model($news,array('url' => $postAction, 'method'=>$actionMethod,'class'=>'form-horizontal', 'id' => 'news_form',
+				{!! Form::model($resp,array('url' => $postAction, 'method'=>$actionMethod,'class'=>'form-horizontal', 'id' => 'resp_form',
 				'files' => true)) !!} {!! Form::hidden('id',null) !!} {!! Form::hidden('assignedUsers',null, array('id' => 'assignedUsers'))
 				!!}
 				<div class="form-body">
@@ -47,47 +47,12 @@
 							obiektu", 'data-live-search'=>'true', 'autocomplete' =>'off', 'spellcheck'=>'false']) !!}
 						</div>
 					</div>
-					@endif
-						<div class="form-group">
-							<label class="col-lg-2 col-md-2 control-label">
-								Images
-							</label>
-							<div class="col-lg-9 col-md-10">
-								{!! Form::file('images[]', ['accept'=> 'image/*','class'=>'form-control','multiple'=> 'multiple']) !!}
-								<span class="help-block">
-									Preferred file format - PNG [max. 2MB].
-								</span>
-							</div>
-						</div>
-						@if(isset($image) && count($image->images)> 0)
-						<div class='form-group'>
-							<label class="col-md-2 control-label">
-								Added images
-							</label>
-							<div class='col-lg-9 col-md-10'>
-								@foreach($news->images as $index=>$image)
-								<div class="col-lg-3 no-gutters">
-									<img src='{{asset($image->webPath())}}' class='img-responsive thumbnail'>
-									<div class='image-remove-button remove-image' data-url="{{route('news.destroy_image',['id' => $image->id])}}">
-										<img src="{{asset('assets/global/img/remove-icon-small.png')}}" class="thumbnail" />
-									</div>
-									<a class="image-download-button_edit_page btn red btn-xs" data-toggle="tooltip" data-title="Pobierz plik" href="{{route('news.download_image',['id' => $image->id])}}" type="button" type="button">
-										<span class="red">
-											<i class="fa fa-download"></i>
-										</span>
-									</a>
-								</div>
-								@if(($index +1) % 4 == 0)
-								<div class="clearfix visible-lg visible-md"></div>
-								@endif @endforeach
-							</div>
-						</div>
-						@endif
+					@endif					
 						<div class="form-actions">
 							<div class="row">
 								<div class="col-md-offset-3 col-lg-5 col-md-7">
 									{!! Form::submit('Confirm', ['class'=>'btn grey-mint grey-mint-stripe btn-outline']) !!}
-									<a class="btn red red-stripe btn-outline" href="{{route('news.index')}}">Cancel</a>
+									<a class="btn red red-stripe btn-outline" href="{{route('resp.index')}}">Cancel</a>
 									{!! Form::close() !!}
 								</div>
 							</div>
@@ -112,6 +77,6 @@
 <script src="{{asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js')}}" type="text/javascript"></script> @stop 
 @section('page-js') 
-@include('news.partials.edit-page-scripts') 
-{{--  @include('news.partials.items-section-scripts')   --}}
+@include('resp.partials.edit-page-scripts') 
+{{--  @include('resp.partials.items-section-scripts')   --}}
 @stop

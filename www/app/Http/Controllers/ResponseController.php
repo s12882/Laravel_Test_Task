@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewsRequest;
 use App\Services\ResponseService;
 use App\Models\User;
+use Auth;
 use App\Models\Response;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class ResponseController extends Controller
         $this->userService = $userService;
         $this->messageModel = trans('models.resp');
         $this->filesFolder = '/images/resp';
+        $this->middleware('auth');
     }
 
     public function index()
@@ -31,8 +33,7 @@ class ResponseController extends Controller
 
     public function create()
     {
-        $sections = $this->sectionService->lists();
-        $users = $this->userService->users()->get();
+       
         return view('resp.edit', [
             'pageTitle' => 'Create response',
             'resp' => null,
@@ -43,6 +44,9 @@ class ResponseController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        $request['email'] = $user->email;
+
         $resp = $this->modelService->store($request);
         if ($resp) {      
             return redirect()->route('resp.index')->withSuccess(trans('actions.created_n', ['object' => $this->messageModel]));

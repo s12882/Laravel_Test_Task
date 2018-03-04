@@ -35,7 +35,7 @@ class RoleController extends Controller
         'model' => null,
         'postAction' => $postAction,
         'actionMethod' => $actionMethod,
-        'pageTitle' => 'Nowa rola',
+        'pageTitle' => 'New role',
         'permissions' => $permissions
       ]);
     }

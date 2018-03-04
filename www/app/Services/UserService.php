@@ -41,8 +41,8 @@ class UserService {
       if(Auth::user()->hasPermissionTo('change role'))
         $user->assignRole(Role::findOrFail($input['role_id']));
 
-      if($user)
-        Mail::to($input['email'])->send(new NewAccount($user, $pass));
+      // if($user)
+      //    Mail::to($input['email'])->send(new NewAccount($user, $pass));
       return $user;
     }
 

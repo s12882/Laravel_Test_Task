@@ -36,8 +36,7 @@
                                 <div class="name"> Responses </div>
                             </div>
                         </div>                    
-                    </a>
-                  
+                    </a>                  
                 </div>
             </div>
         </div>

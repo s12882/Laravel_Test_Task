@@ -11,10 +11,10 @@
  * Locale: PL (Polish; język polski, polszczyzna)
  */
 $.extend($.validator.messages, {
-	required: "To pole jest wymagane.",
-	remote: "Proszę o wypełnienie tego pola.",
-	email: "Proszę o podanie prawidłowego adresu email.",
-	url: "Proszę o podanie prawidłowego URL.",
+	required: "This field is required",
+	remote: "Please fill this field",
+	email: "Please enter correct email address",
+	url: "Please enter correct URL",
 	date: "Proszę o podanie prawidłowej daty.",
 	dateISO: "Proszę o podanie prawidłowej daty (ISO).",
 	number: "Proszę o podanie prawidłowej liczby.",

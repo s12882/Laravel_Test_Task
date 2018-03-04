@@ -3,21 +3,7 @@
         processing: true,
         serverSide: true,
         buttons: [
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
-                exportOptions: {
-                    columns: [ 0,1,2,3,4,6,7,5],
-                    orthogonal: 'export',
-                    stripNewlines: false
-                },
-                customize : function(doc) {
-                    doc.content[0].text = "",
-                    doc.content[1].table.widths = [ '16%', '30%', '10%', '10%', '7%','6%','6%', '15%'],
-                    doc.content[2].table.heights = ['100px'];
-                }      
-            }
+           
         ],
         ajax: {
             url: '{!! route('news.datatables') !!}',

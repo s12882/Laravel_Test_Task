@@ -38,11 +38,7 @@
                 }
             });
         }
-
-
-
         loadComments();
-
         function loadNewComments() {
             $.ajax({
                 type: "POST",

@@ -32,7 +32,7 @@
                   </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">
-                            Imię <span class="required" aria-required="true"> * </span>
+                            Name <span class="required" aria-required="true"> * </span>
                         </label>
                         <div class="col-lg-6 col-md-8">
                                 @if(!preg_match('/profile/', Route::currentRouteName()))
@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">
-                            Nazwisko <span class="required" aria-required="true"> * </span>
+                            Surname <span class="required" aria-required="true"> * </span>
                         </label>
                         <div class="col-lg-6 col-md-8">
                                 @if(!preg_match('/profile/', Route::currentRouteName()))
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">
-                            Telefon:
+                            Phone:
                         </label>
                         <div class="col-lg-6 col-md-8">
                             <div class="input-icon right">
@@ -98,7 +98,7 @@
                     <div class="form-group">
                     @endif
                         <label class="col-md-2 control-label">
-                            Hasło:
+                            Password:
                         </label>
                         <div class="col-lg-6 col-md-8">
                             <div class="input-icon right">
@@ -115,7 +115,7 @@
                         <div class="col-lg-6 col-md-8">
                             <div class="input-icon right">
                                 <i class="fa"></i>
-                                  {!! Form::select('role_id', $roles, $user != null ? $user->roles : null, ['class' => 'form-control bs-select','data-none-selected-text' => "Nie wybrano roli", 'data-live-search'=>true, 'autocomplete' =>'off', 'spellcheck'=>'false']) !!}
+                                  {!! Form::select('role_id', $roles, $user != null ? $user->roles : null, ['class' => 'form-control bs-select','data-none-selected-text' => "No role checked", 'data-live-search'=>true, 'autocomplete' =>'off', 'spellcheck'=>'false']) !!}
                             </div>
                         </div>
                     </div>
@@ -123,8 +123,8 @@
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-2 col-lg-5 col-md-7">
-                            {!! Form::submit('Zatwierdź', ['class'=>'btn grey-mint grey-mint-stripe btn-outline']) !!}
-                            <a class="btn red red-stripe btn-outline" href="{{$back_button_action}}">Powróć</a>
+                            {!! Form::submit('Confirm', ['class'=>'btn grey-mint grey-mint-stripe btn-outline']) !!}
+                            <a class="btn red red-stripe btn-outline" href="{{$back_button_action}}">Cancel</a>
                             {!! Form::close() !!}
                         </div>
                     </div>

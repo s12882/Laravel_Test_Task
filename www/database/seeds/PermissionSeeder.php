@@ -33,7 +33,6 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'delete response']);
 
         Permission::create(['name' => 'change role']);
-        Permission::create(['name' => 'change section']);
 
     }
 }
